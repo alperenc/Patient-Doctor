@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Patient.h"
 #import "Prescription.h"
+
+@class Patient;
 
 @interface Doctor : NSObject
 
@@ -17,7 +18,7 @@
 @property (nonatomic) NSMutableSet *acceptedPatients;
 
 // Designated initializer
--(instancetype)initWithName:(NSString *)name andSpecialization:(NSString *)specialization;
+-(instancetype)initWithName:(NSString *)name specialization:(NSString *)specialization andPatientRecords:(NSMutableDictionary *)patientRecords;
 
 -(void)acceptPatient:(Patient *)patient;
 

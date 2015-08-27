@@ -7,6 +7,7 @@
 //
 
 #import "Patient.h"
+#import "Doctor.h"
 
 @implementation Patient
 
@@ -18,7 +19,7 @@
         self.name = name;
         self.age = age;
         self.haveValidHealthCard = YES;
-        self.symptoms = [NSMutableSet set];
+        self.symptoms = symptoms;
     }
     
     return self;

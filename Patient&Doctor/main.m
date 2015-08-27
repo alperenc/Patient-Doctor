@@ -7,11 +7,28 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Patient.h"
+#import "Doctor.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        // insert code here...
-        NSLog(@"Hello, World!");
+        
+        NSMutableDictionary *patientRecords = [NSMutableDictionary dictionary];
+        
+        for (int i = 0; i < 3; i++) {
+            Patient *patient = [[Patient alloc] initWithName:@"Alp" age:30 andSymptoms:[[NSSet alloc] initWithObjects:@"runny nose", @"cough", nil]];
+            
+            Doctor *doctor = [[Doctor alloc] initWithName:@"Dr. House" specialization:@"Diagnostics" andPatientRecords:patientRecords];
+            
+            [patient visitDoctor:doctor];
+            
+            [patient requestMedicationFromDoctor:doctor];
+            
+            NSLog(@"%@", patientRecords);
+        }
+        
+        NSLog(@"%@", patientRecords);
+        
     }
     return 0;
 }

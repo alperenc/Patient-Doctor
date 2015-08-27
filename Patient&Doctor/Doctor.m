@@ -7,16 +7,24 @@
 //
 
 #import "Doctor.h"
+#import "Patient.h"
+
+@interface Doctor ()
+
+@property (nonatomic) NSMutableDictionary *patientRecords;
+
+@end
 
 @implementation Doctor
 
--(instancetype)initWithName:(NSString *)name andSpecialization:(NSString *)specialization {
+-(instancetype)initWithName:(NSString *)name specialization:(NSString *)specialization andPatientRecords:(NSMutableDictionary *)patientRecords {
     
     self = [super init];
     
     if (self) {
         self.name = name;
         self.specialization = specialization;
+        self.patientRecords = patientRecords;
         self.acceptedPatients = [NSMutableSet set];
     }
     
@@ -35,8 +43,12 @@
 
 -(Prescription *)issuePrescriptionToPatient:(Patient *)patient {
     if ([self.acceptedPatients containsObject:patient]) {
-        if ([patient.symptoms count]) {
-            return [[Prescription alloc] initWithSymptoms:patient.symptoms];
+        if (patient.symptoms.count) {
+            Prescription *prescription = [[Prescription alloc] initWithSymptoms:patient.symptoms];
+            NSMutableArray *previousPrescriptions = [NSMutableArray arrayWithArray:[self.patientRecords objectForKey:patient.name]];
+            [previousPrescriptions addObject:prescription];
+            [self.patientRecords setObject:previousPrescriptions forKey:patient.name];
+            return prescription;
         } else {
             NSLog(@"To request a prescription, you must have symptoms.");
         }
