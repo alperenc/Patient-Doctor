@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Patient.h"
+#import "Prescription.h"
 
 @interface Doctor : NSObject
 
@@ -19,5 +20,7 @@
 -(instancetype)initWithName:(NSString *)name andSpecialization:(NSString *)specialization;
 
 -(void)acceptPatient:(Patient *)patient;
+
+-(Prescription *)issuePrescriptionToPatient:(Patient *)patient;
 
 @end

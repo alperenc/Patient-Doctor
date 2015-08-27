@@ -10,7 +10,7 @@
 
 @implementation Patient
 
--(instancetype)initWithName:(NSString *)name andAge:(NSUInteger)age {
+-(instancetype)initWithName:(NSString *)name age:(NSUInteger)age andSymptoms:(NSSet *)symptoms{
     
     self = [super init];
     
@@ -18,6 +18,7 @@
         self.name = name;
         self.age = age;
         self.haveValidHealthCard = YES;
+        self.symptoms = [NSMutableSet set];
     }
     
     return self;
@@ -27,6 +28,12 @@
 -(void)visitDoctor:(Doctor *)doctor {
     
     [doctor acceptPatient:self];
+    
+}
+
+-(void)requestMedicationFromDoctor:(Doctor *)doctor {
+    
+    [doctor issuePrescriptionToPatient:self];
     
 }
 

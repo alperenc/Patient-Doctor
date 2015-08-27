@@ -33,4 +33,20 @@
     
 }
 
+-(Prescription *)issuePrescriptionToPatient:(Patient *)patient {
+    if ([self.acceptedPatients containsObject:patient]) {
+        if ([patient.symptoms count]) {
+            return [[Prescription alloc] initWithSymptoms:patient.symptoms];
+        } else {
+            NSLog(@"To request a prescription, you must have symptoms.");
+        }
+        
+    } else {
+        NSLog(@"To request a prescription, you must be accepted before.");
+        
+    }
+    
+    return nil;
+}
+
 @end

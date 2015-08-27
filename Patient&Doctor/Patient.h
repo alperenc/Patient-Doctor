@@ -14,9 +14,11 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, assign) NSUInteger age;
 @property (nonatomic, assign) BOOL haveValidHealthCard;
+@property (nonatomic) NSSet *symptoms;
 
--(instancetype)initWithName:(NSString *)name andAge:(NSUInteger)age;
+-(instancetype)initWithName:(NSString *)name age:(NSUInteger)age andSymptoms:(NSSet *)symptoms;
 
 -(void)visitDoctor:(Doctor *)doctor;
+-(void)requestMedicationFromDoctor:(Doctor *)doctor;
 
 @end
