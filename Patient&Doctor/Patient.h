@@ -7,12 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Doctor.h"
 
 @interface Patient : NSObject
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, assign) NSUInteger age;
+@property (nonatomic, assign) BOOL haveValidHealthCard;
 
 -(instancetype)initWithName:(NSString *)name andAge:(NSUInteger)age;
+
+-(void)visitDoctor:(Doctor *)doctor;
 
 @end

@@ -17,9 +17,16 @@
     if (self) {
         self.name = name;
         self.age = age;
+        self.haveValidHealthCard = YES;
     }
     
     return self;
+    
+}
+
+-(void)visitDoctor:(Doctor *)doctor {
+    
+    [doctor acceptPatient:self];
     
 }
 

@@ -17,9 +17,20 @@
     if (self) {
         self.name = name;
         self.specialization = specialization;
+        self.acceptedPatients = [NSMutableSet set];
     }
     
     return self;
+}
+
+-(void)acceptPatient:(Patient *)patient {
+    
+    if (patient.haveValidHealthCard) {
+        [self.acceptedPatients addObject:patient];
+    } else {
+        NSLog(@"To be accepted by a doctor, you must hold a valid health card.");
+    }
+    
 }
 
 @end
